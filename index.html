@@ -1,0 +1,69 @@
+<!DOCTYPE html> 
+<html lang="en">
+	<head>
+		<title>coordinate test</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<style type="text/css" media="screen">
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		body{
+			overflow: hidden;
+		}
+		#container{
+			position: relative;
+		}
+		#main-coordinate{
+			position: absolute;
+			left:0;
+			top:0;
+		}
+		#control{
+			position: absolute;
+			left: 0;
+			top:0;
+			z-index:10;
+		}
+		#code{
+			width:200px;
+			height:60px;
+		}
+		#drawfuncs{
+			border:1px solid #555;
+		}
+		#function-context{
+			width: 100%;
+			height: 100%;
+		}
+		</style>
+	</head>
+	<body>
+		<div id="container">
+		<div id="control">
+			<div id="code-container">
+				<textarea id="code">Math.PI / k</textarea>
+				<button id="darwfunc">绘制函数</button>
+				<pre id="function-context"></pre>
+			</div>
+		</div>
+			<canvas id="main-coordinate"></canvas>
+		</div>
+		<script src="src/zepto.js" type="text/javascript" charset="utf-8"></script>
+		<script src="src/main.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+		$("#darwfunc").click(function(e){
+			$("#code").hide();
+			$("#darwfunc").hide();
+			var funtext = $("#code").val();
+			$("#function-context").show().text(  funtext );
+			draw(new Function("k","return " + funtext));
+		});
+		$("#function-context").click(function(e){
+				$("#function-context").hide();
+				$("#code").show();
+				$("#darwfunc").show();
+		});
+		</script>
+	</body>
+</html>
