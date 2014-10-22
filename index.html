@@ -42,7 +42,7 @@
 		<div id="container">
 		<div id="control">
 			<div id="code-container">
-				<textarea id="code">Math.PI / k</textarea>
+				<textarea id="code">return Math.PI / k</textarea>
 				<button id="darwfunc">绘制函数</button>
 				<pre id="function-context"></pre>
 			</div>
@@ -56,8 +56,8 @@
 			$("#code").hide();
 			$("#darwfunc").hide();
 			var funtext = $("#code").val();
-			$("#function-context").show().text(  funtext );
-			draw(new Function("k","return " + funtext));
+			$("#function-context").show().text( funtext );
+			draw(new Function("k", funtext));
 		});
 		$("#function-context").click(function(e){
 				$("#function-context").hide();
